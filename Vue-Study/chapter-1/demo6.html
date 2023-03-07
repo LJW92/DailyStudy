@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div id="app">
+    <jiawei v-for="item in items" v-bind:buff="item"></jiawei>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.min.js"></script>
+<script>
+    /*定义一个vue组件*/
+    Vue.component("jiawei",{
+        props: ["buff"],
+        template: '<li>{{buff}}</li>>'
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            items: ["Java", "linux", "front-end"]
+        }
+    });
+</script>
+
+
+</body>
+</html>

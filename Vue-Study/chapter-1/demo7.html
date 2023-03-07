@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="vue">
+  <div>{{info.name}}</div>
+  <div>{{info.address.street}}</div>
+  <a v-bind:href="info.url">click me</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#vue',
+        data(){
+          return{
+            info:{
+                name: null,
+                address:{
+                  street: null,
+                  city:null,
+                  country:null
+                },
+                url: null
+            }
+          }
+        },
+        mounted(){ //hook function
+            axios.get('../data.json').then(response=>(this.info=response.data)); //take data from data.json and put into info
+        }
+    });
+</script>
+
+</body>
+</html>
